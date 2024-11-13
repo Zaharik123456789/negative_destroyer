@@ -15,13 +15,15 @@
         "images.g.jres",
         "images.g.ts",
         "pxt.json",
-        "main.py"
+        "main.py",
+        "tilemap.g.jres",
+        "tilemap.g.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.12.47",
+        "target": "1.12.57",
         "targetId": "arcade"
     },
     "supportedTargets": [

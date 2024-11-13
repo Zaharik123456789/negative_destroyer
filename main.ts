@@ -24,6 +24,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite3, otherS
     info.changeLifeBy(-1)
     otherSprite3.destroy(effects.fire, 100)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite2, otherSprite2) {
+    info.changeLifeBy(1)
+    otherSprite2.destroy()
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Gas, function (sprite2, otherSprite2) {
     statusbar.value = 100
     otherSprite2.destroy()
@@ -31,6 +35,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Gas, function (sprite2, otherSpr
 statusbars.onZero(StatusBarKind.Energy, function (status) {
     game.over(false)
 })
+let _1up: Sprite = null
 let myEnemy: Sprite = null
 let myFuel: Sprite = null
 let projectile: Sprite = null
@@ -55,4 +60,9 @@ game.onUpdateInterval(1000, function () {
 })
 game.onUpdateInterval(300, function () {
     statusbar.value += -1
+})
+game.onUpdateInterval(10000, function () {
+    _1up = sprites.createProjectileFromSide(assets.image`1-up`, 0, 50)
+    _1up.x = randint(0, 160)
+    _1up.setKind(SpriteKind.Food)
 })
